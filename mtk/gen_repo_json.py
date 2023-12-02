@@ -30,8 +30,11 @@ def merge_with_existing_json(new_entry):
     insert the newly generated platform object
     to its platform list
     '''
-    req = requests.get(CURRENT_JSON_URL)
-    repo_content = json.loads(req.text)
+    # req = requests.get(CURRENT_JSON_URL)
+    with open("package_mtk_linkit_smart_7688_test_index.json") as infile:
+        json_file = infile.read()
+
+    repo_content = json.loads(json_file)
     platforms = repo_content['packages'][0]['platforms']
     print "how many versions (online repo):", len(platforms)
 
